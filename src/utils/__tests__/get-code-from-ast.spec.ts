@@ -18,7 +18,6 @@ import a from 'a';
     const sortedNodes = getSortedNodes(importNodes, {
         importOrder: [],
         importOrderCaseInsensitive: false,
-        importOrderSeparation: false,
     });
     const formatted = getCodeFromAst(sortedNodes, code, null);
     expect(format(formatted, { parser: 'babel' })).toEqual(

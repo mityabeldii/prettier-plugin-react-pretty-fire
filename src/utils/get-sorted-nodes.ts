@@ -17,8 +17,6 @@ export const getSortedNodes: GetSortedNodes = (nodes, options) => {
     naturalSort.insensitive = options.importOrderCaseInsensitive;
 
     let { importOrder } = options;
-    const { importOrderSeparation } =
-        options;
 
     const originalNodes = nodes.map(clone);
     const finalNodes: ImportOrLine[] = [];
@@ -55,13 +53,9 @@ export const getSortedNodes: GetSortedNodes = (nodes, options) => {
         const sortedInsideGroup = getSortedNodesGroup(groupNodes);
 
         finalNodes.push(...sortedInsideGroup);
-
-        if (importOrderSeparation) {
-            finalNodes.push(newLineNode);
-        }
     }
 
-    if (finalNodes.length > 0 && !importOrderSeparation) {
+    if (finalNodes.length > 0) {
         // a newline after all imports
         finalNodes.push(newLineNode);
     }

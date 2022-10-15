@@ -6,7 +6,6 @@ export interface PrettierOptions extends RequiredOptions {
     importOrderCaseInsensitive: boolean;
     // should be of type ParserPlugin from '@babel/parser' but prettier does not support nested arrays in options
     importOrderParserPlugins: string[];
-    importOrderSeparation: boolean;
 }
 
 export type ImportGroups = Record<string, ImportDeclaration[]>;
@@ -16,6 +15,6 @@ export type GetSortedNodes = (
     nodes: ImportDeclaration[],
     options: Pick<
         PrettierOptions,
-        'importOrder' | 'importOrderCaseInsensitive' | 'importOrderSeparation'
+        'importOrder' | 'importOrderCaseInsensitive'
     >,
 ) => ImportOrLine[];

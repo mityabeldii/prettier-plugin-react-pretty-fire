@@ -25,7 +25,6 @@ test('it returns all sorted nodes', () => {
     const sorted = getSortedNodes(result, {
         importOrder: [],
         importOrderCaseInsensitive: false,
-        importOrderSeparation: false,
     }) as ImportDeclaration[];
 
     expect(getSortedNodesNames(sorted)).toEqual([
@@ -67,7 +66,6 @@ test('it returns all sorted nodes case-insensitive', () => {
     const sorted = getSortedNodes(result, {
         importOrder: [],
         importOrderCaseInsensitive: true,
-        importOrderSeparation: false,
     }) as ImportDeclaration[];
 
     expect(getSortedNodesNames(sorted)).toEqual([
@@ -109,7 +107,6 @@ test('it returns all sorted nodes with sort order', () => {
     const sorted = getSortedNodes(result, {
         importOrder: ['^a$', '^t$', '^k$', '^B'],
         importOrderCaseInsensitive: false,
-        importOrderSeparation: false,
     }) as ImportDeclaration[];
 
     expect(getSortedNodesNames(sorted)).toEqual([
@@ -151,7 +148,6 @@ test('it returns all sorted nodes with sort order case-insensitive', () => {
     const sorted = getSortedNodes(result, {
         importOrder: ['^a$', '^t$', '^k$', '^B'],
         importOrderCaseInsensitive: true,
-        importOrderSeparation: false,
     }) as ImportDeclaration[];
     expect(getSortedNodesNames(sorted)).toEqual([
         'c',
@@ -192,7 +188,6 @@ test('it returns all sorted import nodes with sorted import specifiers', () => {
     const sorted = getSortedNodes(result, {
         importOrder: ['^a$', '^t$', '^k$', '^B'],
         importOrderCaseInsensitive: false,
-        importOrderSeparation: false,
     }) as ImportDeclaration[];
     expect(getSortedNodesNames(sorted)).toEqual([
         'XY',
@@ -233,7 +228,6 @@ test('it returns all sorted import nodes with sorted import specifiers with case
     const sorted = getSortedNodes(result, {
         importOrder: ['^a$', '^t$', '^k$', '^B'],
         importOrderCaseInsensitive: true,
-        importOrderSeparation: false,
     }) as ImportDeclaration[];
     expect(getSortedNodesNames(sorted)).toEqual([
         'c',
@@ -273,7 +267,6 @@ test('it returns all sorted nodes with custom third party modules', () => {
     const result = getImportNodes(code);
     const sorted = getSortedNodes(result, {
         importOrder: ['^a$', '<THIRD_PARTY_MODULES>', '^t$', '^k$'],
-        importOrderSeparation: false,
         importOrderCaseInsensitive: true,
     }) as ImportDeclaration[];
     expect(getSortedNodesNames(sorted)).toEqual([
@@ -296,7 +289,6 @@ test('it returns all sorted nodes with namespace specifiers at the top', () => {
     const sorted = getSortedNodes(result, {
         importOrder: [],
         importOrderCaseInsensitive: false,
-        importOrderSeparation: false,
     }) as ImportDeclaration[];
 
     expect(getSortedNodesNames(sorted)).toEqual([
