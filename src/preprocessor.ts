@@ -11,7 +11,6 @@ export function preprocessor(code: string, options: PrettierOptions) {
     const {
         importOrderParserPlugins,
         importOrder,
-        importOrderCaseInsensitive,
     } = options;
 
     const importNodes: ImportDeclaration[] = [];
@@ -39,7 +38,6 @@ export function preprocessor(code: string, options: PrettierOptions) {
 
     const allImports = getSortedNodes(importNodes, {
         importOrder,
-        importOrderCaseInsensitive,
     });
 
     return getCodeFromAst(allImports, code, interpreter);

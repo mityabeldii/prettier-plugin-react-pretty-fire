@@ -2,7 +2,6 @@ import { addComments, removeComments } from '@babel/types';
 import { clone, isEqual } from 'lodash';
 
 import { newLineNode, THIRD_PARTY_MODULES_SPECIAL_WORD } from '../constants';
-import { naturalSort } from '../natural-sort';
 import { GetSortedNodes, ImportGroups, ImportOrLine } from '../types';
 import { getImportNodesMatchedGroup } from './get-import-nodes-matched-group';
 import { getSortedNodesGroup } from './get-sorted-nodes-group';
@@ -14,8 +13,6 @@ import { getSortedNodesGroup } from './get-sorted-nodes-group';
  * @param options
  */
 export const getSortedNodes: GetSortedNodes = (nodes, options) => {
-    naturalSort.insensitive = options.importOrderCaseInsensitive;
-
     let { importOrder } = options;
 
     const originalNodes = nodes.map(clone);

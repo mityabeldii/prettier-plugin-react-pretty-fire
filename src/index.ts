@@ -10,12 +10,6 @@ const options = {
         default: [{ value: [] }],
         description: 'Provide an order to sort imports.',
     },
-    importOrderCaseInsensitive: {
-        type: 'boolean',
-        category: 'Global',
-        default: false,
-        description: 'Provide a case sensitivity boolean flag',
-    },
     importOrderParserPlugins: {
         type: 'path',
         category: 'Global',
