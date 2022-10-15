@@ -31,13 +31,6 @@ const options = {
         default: false,
         description: 'Should imports be separated by new line?',
     },
-    importOrderGroupNamespaceSpecifiers: {
-        type: 'boolean',
-        category: 'Global',
-        default: false,
-        description:
-            'Should namespace specifiers be grouped at the top of their group?',
-    },
 };
 
 module.exports = {

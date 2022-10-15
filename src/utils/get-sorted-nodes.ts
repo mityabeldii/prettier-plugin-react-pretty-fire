@@ -17,7 +17,7 @@ export const getSortedNodes: GetSortedNodes = (nodes, options) => {
     naturalSort.insensitive = options.importOrderCaseInsensitive;
 
     let { importOrder } = options;
-    const { importOrderSeparation, importOrderGroupNamespaceSpecifiers } =
+    const { importOrderSeparation } =
         options;
 
     const originalNodes = nodes.map(clone);
@@ -52,9 +52,7 @@ export const getSortedNodes: GetSortedNodes = (nodes, options) => {
 
         if (groupNodes.length === 0) continue;
 
-        const sortedInsideGroup = getSortedNodesGroup(groupNodes, {
-            importOrderGroupNamespaceSpecifiers,
-        });
+        const sortedInsideGroup = getSortedNodesGroup(groupNodes);
 
         finalNodes.push(...sortedInsideGroup);
 

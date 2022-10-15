@@ -1,4 +1,4 @@
-import { ParserOptions, parse as babelParser } from '@babel/parser';
+import { parse as babelParser, ParserOptions } from '@babel/parser';
 import traverse, { NodePath } from '@babel/traverse';
 import { ImportDeclaration, isTSModuleDeclaration } from '@babel/types';
 
@@ -13,7 +13,6 @@ export function preprocessor(code: string, options: PrettierOptions) {
         importOrder,
         importOrderCaseInsensitive,
         importOrderSeparation,
-        importOrderGroupNamespaceSpecifiers,
     } = options;
 
     const importNodes: ImportDeclaration[] = [];
@@ -43,7 +42,6 @@ export function preprocessor(code: string, options: PrettierOptions) {
         importOrder,
         importOrderCaseInsensitive,
         importOrderSeparation,
-        importOrderGroupNamespaceSpecifiers,
     });
 
     return getCodeFromAst(allImports, code, interpreter);
