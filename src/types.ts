@@ -8,7 +8,6 @@ export interface PrettierOptions extends RequiredOptions {
     importOrderParserPlugins: string[];
     importOrderSeparation: boolean;
     importOrderGroupNamespaceSpecifiers: boolean;
-    importOrderSortSpecifiers: boolean;
 }
 
 export type ImportGroups = Record<string, ImportDeclaration[]>;
@@ -22,6 +21,5 @@ export type GetSortedNodes = (
         | 'importOrderCaseInsensitive'
         | 'importOrderSeparation'
         | 'importOrderGroupNamespaceSpecifiers'
-        | 'importOrderSortSpecifiers'
     >,
 ) => ImportOrLine[];

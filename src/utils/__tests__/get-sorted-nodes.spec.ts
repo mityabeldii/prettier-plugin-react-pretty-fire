@@ -27,7 +27,6 @@ test('it returns all sorted nodes', () => {
         importOrderCaseInsensitive: false,
         importOrderSeparation: false,
         importOrderGroupNamespaceSpecifiers: false,
-        importOrderSortSpecifiers: false,
     }) as ImportDeclaration[];
 
     expect(getSortedNodesNames(sorted)).toEqual([
@@ -71,7 +70,6 @@ test('it returns all sorted nodes case-insensitive', () => {
         importOrderCaseInsensitive: true,
         importOrderSeparation: false,
         importOrderGroupNamespaceSpecifiers: false,
-        importOrderSortSpecifiers: false,
     }) as ImportDeclaration[];
 
     expect(getSortedNodesNames(sorted)).toEqual([
@@ -115,7 +113,6 @@ test('it returns all sorted nodes with sort order', () => {
         importOrderCaseInsensitive: false,
         importOrderSeparation: false,
         importOrderGroupNamespaceSpecifiers: false,
-        importOrderSortSpecifiers: false,
     }) as ImportDeclaration[];
 
     expect(getSortedNodesNames(sorted)).toEqual([
@@ -159,7 +156,6 @@ test('it returns all sorted nodes with sort order case-insensitive', () => {
         importOrderCaseInsensitive: true,
         importOrderSeparation: false,
         importOrderGroupNamespaceSpecifiers: false,
-        importOrderSortSpecifiers: false,
     }) as ImportDeclaration[];
     expect(getSortedNodesNames(sorted)).toEqual([
         'c',
@@ -202,7 +198,6 @@ test('it returns all sorted import nodes with sorted import specifiers', () => {
         importOrderCaseInsensitive: false,
         importOrderSeparation: false,
         importOrderGroupNamespaceSpecifiers: false,
-        importOrderSortSpecifiers: true,
     }) as ImportDeclaration[];
     expect(getSortedNodesNames(sorted)).toEqual([
         'XY',
@@ -245,7 +240,6 @@ test('it returns all sorted import nodes with sorted import specifiers with case
         importOrderCaseInsensitive: true,
         importOrderSeparation: false,
         importOrderGroupNamespaceSpecifiers: false,
-        importOrderSortSpecifiers: true,
     }) as ImportDeclaration[];
     expect(getSortedNodesNames(sorted)).toEqual([
         'c',
@@ -288,7 +282,6 @@ test('it returns all sorted nodes with custom third party modules', () => {
         importOrderSeparation: false,
         importOrderCaseInsensitive: true,
         importOrderGroupNamespaceSpecifiers: false,
-        importOrderSortSpecifiers: false,
     }) as ImportDeclaration[];
     expect(getSortedNodesNames(sorted)).toEqual([
         'a',
@@ -312,7 +305,6 @@ test('it returns all sorted nodes with namespace specifiers at the top', () => {
         importOrderCaseInsensitive: false,
         importOrderSeparation: false,
         importOrderGroupNamespaceSpecifiers: true,
-        importOrderSortSpecifiers: false,
     }) as ImportDeclaration[];
 
     expect(getSortedNodesNames(sorted)).toEqual([

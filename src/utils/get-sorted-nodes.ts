@@ -1,11 +1,10 @@
 import { addComments, removeComments } from '@babel/types';
 import { clone, isEqual } from 'lodash';
 
-import { THIRD_PARTY_MODULES_SPECIAL_WORD, newLineNode } from '../constants';
+import { newLineNode, THIRD_PARTY_MODULES_SPECIAL_WORD } from '../constants';
 import { naturalSort } from '../natural-sort';
 import { GetSortedNodes, ImportGroups, ImportOrLine } from '../types';
 import { getImportNodesMatchedGroup } from './get-import-nodes-matched-group';
-import { getSortedImportSpecifiers } from './get-sorted-import-specifiers';
 import { getSortedNodesGroup } from './get-sorted-nodes-group';
 
 /**
@@ -18,11 +17,8 @@ export const getSortedNodes: GetSortedNodes = (nodes, options) => {
     naturalSort.insensitive = options.importOrderCaseInsensitive;
 
     let { importOrder } = options;
-    const {
-        importOrderSeparation,
-        importOrderSortSpecifiers,
-        importOrderGroupNamespaceSpecifiers,
-    } = options;
+    const { importOrderSeparation, importOrderGroupNamespaceSpecifiers } =
+        options;
 
     const originalNodes = nodes.map(clone);
     const finalNodes: ImportOrLine[] = [];
@@ -59,13 +55,6 @@ export const getSortedNodes: GetSortedNodes = (nodes, options) => {
         const sortedInsideGroup = getSortedNodesGroup(groupNodes, {
             importOrderGroupNamespaceSpecifiers,
         });
-
-        // Sort the import specifiers
-        if (importOrderSortSpecifiers) {
-            sortedInsideGroup.forEach((node) =>
-                getSortedImportSpecifiers(node),
-            );
-        }
 
         finalNodes.push(...sortedInsideGroup);
 

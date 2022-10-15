@@ -38,12 +38,6 @@ const options = {
         description:
             'Should namespace specifiers be grouped at the top of their group?',
     },
-    importOrderSortSpecifiers: {
-        type: 'boolean',
-        category: 'Global',
-        default: false,
-        description: 'Should specifiers be sorted?',
-    },
 };
 
 module.exports = {

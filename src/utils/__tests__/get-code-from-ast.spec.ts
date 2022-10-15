@@ -20,7 +20,6 @@ import a from 'a';
         importOrderCaseInsensitive: false,
         importOrderSeparation: false,
         importOrderGroupNamespaceSpecifiers: false,
-        importOrderSortSpecifiers: false,
     });
     const formatted = getCodeFromAst(sortedNodes, code, null);
     expect(format(formatted, { parser: 'babel' })).toEqual(

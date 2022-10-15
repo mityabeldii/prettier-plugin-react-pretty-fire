@@ -5,8 +5,7 @@ module.exports = {
     singleQuote: true,
     jsxBracketSameLine: true,
     semi: true,
-    plugins: [require('./lib/src/index.js')],
+    // plugins: [require('./lib/src/index.js')],
     importOrder: ['^[./]'],
     importOrderSeparation: true,
-    importOrderSortSpecifiers: true,
 };
