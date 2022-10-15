@@ -4,19 +4,15 @@ import { ImportDeclaration, isTSModuleDeclaration } from '@babel/types';
 
 import { PrettierOptions } from './types';
 import { getCodeFromAst } from './utils/get-code-from-ast';
-import { getExperimentalParserPlugins } from './utils/get-experimental-parser-plugins';
 import { getSortedNodes } from './utils/get-sorted-nodes';
 
 export function preprocessor(code: string, options: PrettierOptions) {
-    const {
-        importOrderParserPlugins,
-        importOrder,
-    } = options;
+    const { importOrder } = options;
 
     const importNodes: ImportDeclaration[] = [];
     const parserOptions: ParserOptions = {
         sourceType: 'module',
-        plugins: getExperimentalParserPlugins(importOrderParserPlugins),
+        plugins: ['typescript', 'jsx'],
     };
 
     const ast = babelParser(code, parserOptions);
