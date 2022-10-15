@@ -1,11 +1,8 @@
 import { parse as babelParser, ParserOptions } from '@babel/parser';
 import traverse, { NodePath } from '@babel/traverse';
-import { ImportDeclaration, isTSModuleDeclaration } from '@babel/types';
+import { JSXAttribute } from '@babel/types';
 
-import { getCodeFromAst } from './utils/get-code-from-ast';
-
-export function preprocessor(code: string) {
-    const importNodes: ImportDeclaration[] = [];
+export const preprocessor = (code: string): string => {
     const parserOptions: ParserOptions = {
         sourceType: 'module',
         plugins: ['typescript', 'jsx'],
@@ -15,20 +12,12 @@ export function preprocessor(code: string) {
     const interpreter = ast.program.interpreter;
 
     traverse(ast, {
-        ImportDeclaration(path: NodePath<ImportDeclaration>) {
-            const tsModuleParent = path.findParent((p) =>
-                isTSModuleDeclaration(p),
-            );
-            if (!tsModuleParent) {
-                importNodes.push(path.node);
-            }
+        JSXAttribute(path: NodePath<JSXAttribute>) {
+            console.log(path.node);
         },
     });
 
-    // short-circuit if there are no import declaration
-    if (importNodes.length === 0) return code;
+    console.log(code);
 
-    const allImports: any[] = [];
-
-    return getCodeFromAst(allImports, code, interpreter);
-}
+    return code;
+};
