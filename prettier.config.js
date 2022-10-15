@@ -6,5 +6,4 @@ module.exports = {
     jsxBracketSameLine: true,
     semi: true,
     // plugins: [require('./lib/src/index.js')],
-    importOrder: ['^[./]'],
 };

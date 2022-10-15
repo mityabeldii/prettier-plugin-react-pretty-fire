@@ -5,18 +5,13 @@ import { THIRD_PARTY_MODULES_SPECIAL_WORD } from '../constants';
 /**
  * Get the regexp group to keep the import nodes.
  * @param node
- * @param importOrder
  */
 export const getImportNodesMatchedGroup = (
     node: ImportDeclaration,
-    importOrder: string[],
 ) => {
-    const groupWithRegExp = importOrder.map((group) => ({
-        group,
-        regExp: new RegExp(group),
-    }));
+    const groupWithRegExp = []
 
-    for (const { group, regExp } of groupWithRegExp) {
+    for (const { group, regExp } of []) {
         const matched = node.source.value.match(regExp) !== null;
         if (matched) return group;
     }
