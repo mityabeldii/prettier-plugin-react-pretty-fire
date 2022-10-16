@@ -18,7 +18,7 @@ export const preprocessor = (code: string): string => {
     const attributesValuesToReplace: string[] = [];
 
     traverse(ast, {
-        JSXAttribute(path: NodePath<JSXAttribute>) {
+        JSXAttribute: (path: NodePath<JSXAttribute>) => {
             if (!path.node.value || !path.node.value.loc) {
                 return;
             }
