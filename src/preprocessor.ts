@@ -25,7 +25,8 @@ export const preprocessor = (code: string): string => {
             const { index: start } = path.node.value?.loc?.start as SourceLocationExtended;
             const { index: end } = path.node.value?.loc?.end as SourceLocationExtended;
             const attributeValue = code.slice(start, end);
-            const isTemplateLiteral = get(path, "node.value.expression.type") === "TemplateLiteral";
+            const type = get(path, "node.value.expression.type");
+            const isTemplateLiteral = type === "TemplateLiteral";
             if (isTemplateLiteral) {
                 const isReallyTemplateLiteral = attributeValue.includes("${");
                 if (!isReallyTemplateLiteral) {
@@ -33,7 +34,9 @@ export const preprocessor = (code: string): string => {
                 }
             } else {
                 if (attributeValue.startsWith("{'") || attributeValue.startsWith('{"')) {
-                    attributesValuesToReplace.push(attributeValue);
+                    if (type === "StringLiteral") {
+                        attributesValuesToReplace.push(attributeValue);
+                    }
                 }
             }
         },
