@@ -1,8 +1,10 @@
 // @ts-nocheck
-import React from 'react';
-
-const HelloWorld = () => {
-    return <div class={`test`}>Hello, world!</div>;
+const ChangePassword = ({ awsId }: any) => {
+    return (
+        <div className={`border`} another={`border`} style={`padding: 20px`}>
+            div
+        </div>
+    );
 };
 
-export default HelloWorld;
+export default ChangePassword;

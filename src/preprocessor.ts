@@ -1,6 +1,7 @@
 import { parse as babelParser, ParserOptions } from '@babel/parser';
 import traverse, { NodePath } from '@babel/traverse';
 import { JSXAttribute, SourceLocation } from '@babel/types';
+import { get } from 'lodash';
 
 type SourceLocationExtended = SourceLocation['start'] & {
     index: number;
@@ -14,10 +15,12 @@ export const preprocessor = (code: string): string => {
 
     const ast = babelParser(code, parserOptions);
 
+    const attributesValuesToReplace: string[] = [];
+
     traverse(ast as any, {
         JSXAttribute(path: NodePath<JSXAttribute>) {
             const isTemplateLiteral =
-                (path.node.value as any)?.expression.type === 'TemplateLiteral';
+                get(path, 'node.value.expression.type') === 'TemplateLiteral';
             if (isTemplateLiteral) {
                 const { index: start } = path.node.value?.loc
                     ?.start as SourceLocationExtended;
@@ -26,13 +29,14 @@ export const preprocessor = (code: string): string => {
                 const className = code.slice(start + 2, end - 2);
                 const isReallyTemplateLiteral = className.includes('${');
                 if (!isReallyTemplateLiteral) {
-                    code = code.replace(
-                        code.slice(start, end),
-                        `"${className}"`,
-                    );
+                    attributesValuesToReplace.push(className);
                 }
             }
         },
+    });
+
+    attributesValuesToReplace.forEach((value) => {
+        code = code.replace(`{\`${value}\`}`, `"${value}"`);
     });
 
     return code;
