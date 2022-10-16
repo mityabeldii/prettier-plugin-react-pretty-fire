@@ -19,6 +19,9 @@ export const preprocessor = (code: string): string => {
 
     traverse(ast as any, {
         JSXAttribute(path: NodePath<JSXAttribute>) {
+            if (!path.node.value || !path.node.value.loc) {
+                return;
+            }
             const { index: start } = path.node.value?.loc?.start as SourceLocationExtended;
             const { index: end } = path.node.value?.loc?.end as SourceLocationExtended;
             const attributeValue = code.slice(start, end);
