@@ -1,6 +1,6 @@
-import { parsers as typescriptParsers } from 'prettier/parser-typescript';
+import { parsers as typescriptParsers } from "prettier/parser-typescript";
 
-import { preprocessor } from './preprocessor';
+import { preprocessor } from "./preprocessor";
 
 module.exports = {
     parsers: {
@@ -9,5 +9,4 @@ module.exports = {
             preprocess: preprocessor,
         },
     },
-    options: {},
 };

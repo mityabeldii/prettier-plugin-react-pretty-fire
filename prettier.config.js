@@ -1,9 +1,5 @@
 module.exports = {
-    printWidth: 80,
+    printWidth: 150,
     tabWidth: 4,
-    trailingComma: 'all',
-    singleQuote: true,
-    jsxBracketSameLine: true,
-    semi: true,
-    // plugins: [require('./lib/src/index.js')],
+    plugins: [require("./lib/src/index.js")],
 };

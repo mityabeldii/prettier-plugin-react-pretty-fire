@@ -5,7 +5,7 @@
   "main": "lib/src/index.js",
   "scripts": {
     "example": "tsc && prettier --plugin lib/src/index.js examples/example.tsx && rm -rf lib",
-    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,scss,css,json}\""
+    "format": "prettier --write \"examples/**/*.{ts,tsx,js,jsx,scss,css,json}\""
   },
   "repository": {
     "type": "git",

@@ -1,10 +1,10 @@
 // @ts-nocheck
-const ChangePassword = ({ awsId }: any) => {
+const HelloWorld = ({ awsId }: any) => {
     return (
-        <div className={`border`} another={`border`} style={`padding: 20px`}>
-            div
+        <div className={`border`} another={`border`} style={`border`}>
+            Hello, world!
         </div>
     );
 };
 
-export default ChangePassword;
+export default HelloWorld;
