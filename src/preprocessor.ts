@@ -19,21 +19,25 @@ export const preprocessor = (code: string): string => {
 
     traverse(ast as any, {
         JSXAttribute(path: NodePath<JSXAttribute>) {
+            const { index: start } = path.node.value?.loc?.start as SourceLocationExtended;
+            const { index: end } = path.node.value?.loc?.end as SourceLocationExtended;
+            const attributeValue = code.slice(start, end);
             const isTemplateLiteral = get(path, "node.value.expression.type") === "TemplateLiteral";
             if (isTemplateLiteral) {
-                const { index: start } = path.node.value?.loc?.start as SourceLocationExtended;
-                const { index: end } = path.node.value?.loc?.end as SourceLocationExtended;
-                const className = code.slice(start + 2, end - 2);
-                const isReallyTemplateLiteral = className.includes("${");
+                const isReallyTemplateLiteral = attributeValue.includes("${");
                 if (!isReallyTemplateLiteral) {
-                    attributesValuesToReplace.push(className);
+                    attributesValuesToReplace.push(attributeValue);
+                }
+            } else {
+                if (attributeValue.startsWith("{'") || attributeValue.startsWith('{"')) {
+                    attributesValuesToReplace.push(attributeValue);
                 }
             }
         },
     });
 
     attributesValuesToReplace.forEach((value) => {
-        code = code.replace(`{\`${value}\`}`, `"${value}"`);
+        code = code.replace(value, `"${value.slice(2, -2)}"`);
     });
 
     return code;

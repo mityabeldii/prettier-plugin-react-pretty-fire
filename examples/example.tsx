@@ -1,8 +1,8 @@
 // @ts-nocheck
-const HelloWorld = ({ awsId }: any) => {
+const HelloWorld = () => {
     return (
         <div className={`border`} another={`border`} style={`border`}>
-            Hello, world!
+            <h1 className={'border'} another={"border"}>Hello, world!</h1>
         </div>
     );
 };
