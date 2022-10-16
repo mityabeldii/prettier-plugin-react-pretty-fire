@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-react-pretty-fire",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "lib/src/index.js",
   "scripts": {
